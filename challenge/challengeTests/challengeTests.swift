@@ -11,24 +11,22 @@ import XCTest
 
 class challengeTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    //MARK: Person Class Tests
+    func testPersonInitializationSucceeds() {
+        let person1 = Person.init(name: "Person1", email: "person1@test.com", avatar: nil)
+        XCTAssertNotNil(person1)
+        
+        let person2 = Person.init(name: "Person2", email: "person2@test.com", avatar: nil)
+        XCTAssertNotNil(person2)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testPersonInitializationFails() {
+        let emptyNamePerson = Person.init(name: "", email: "empty@name.com", avatar: nil)
+        XCTAssertNil(emptyNamePerson)
+        
+        let emptyEmailPerson = Person.init(name: "Empty Email", email: "", avatar: nil)
+        XCTAssertNil(emptyEmailPerson)
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
+    
 }

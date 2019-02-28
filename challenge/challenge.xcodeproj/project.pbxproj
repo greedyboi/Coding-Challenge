@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CCA9A4472227170D0078897B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA9A4462227170D0078897B /* Request.swift */; };
+		CCA9A44C22271E2C0078897B /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA9A44B22271E2C0078897B /* Persons.swift */; };
 		CCF107CD22246C8600FF2D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107CC22246C8600FF2D19 /* AppDelegate.swift */; };
 		CCF107CF22246C8600FF2D19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107CE22246C8600FF2D19 /* ViewController.swift */; };
 		CCF107D222246C8600FF2D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF107D022246C8600FF2D19 /* Main.storyboard */; };
 		CCF107D422246C8800FF2D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF107D322246C8800FF2D19 /* Assets.xcassets */; };
 		CCF107D722246C8800FF2D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF107D522246C8800FF2D19 /* LaunchScreen.storyboard */; };
 		CCF107E222246C8800FF2D19 /* challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107E122246C8800FF2D19 /* challengeTests.swift */; };
+		CCF107ED22249E3D00FF2D19 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107EC22249E3D00FF2D19 /* PersonTableViewCell.swift */; };
+		CCF107F22224ABC700FF2D19 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107F02224ABC700FF2D19 /* PersonTableViewController.swift */; };
+		CCF107F52224B5C500FF2D19 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107F42224B5C500FF2D19 /* PersonDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CCA9A4462227170D0078897B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		CCA9A44B22271E2C0078897B /* Persons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persons.swift; sourceTree = "<group>"; };
 		CCF107C922246C8600FF2D19 /* challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF107CC22246C8600FF2D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF107CE22246C8600FF2D19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +43,9 @@
 		CCF107DD22246C8800FF2D19 /* challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = challengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF107E122246C8800FF2D19 /* challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challengeTests.swift; sourceTree = "<group>"; };
 		CCF107E322246C8800FF2D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCF107EC22249E3D00FF2D19 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		CCF107F02224ABC700FF2D19 /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
+		CCF107F42224B5C500FF2D19 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CCA9A445222716F20078897B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CCA9A4462227170D0078897B /* Request.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CCA9A44822271DCC0078897B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CCF107F42224B5C500FF2D19 /* PersonDetailsViewController.swift */,
+				CCF107F02224ABC700FF2D19 /* PersonTableViewController.swift */,
+				CCF107CE22246C8600FF2D19 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CCA9A44922271E000078897B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCF107EC22249E3D00FF2D19 /* PersonTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CCA9A44A22271E190078897B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CCA9A44B22271E2C0078897B /* Persons.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CCF107C022246C8600FF2D19 = {
 			isa = PBXGroup;
 			children = (
@@ -77,8 +121,11 @@
 		CCF107CB22246C8600FF2D19 /* challenge */ = {
 			isa = PBXGroup;
 			children = (
+				CCA9A44A22271E190078897B /* Models */,
+				CCA9A44922271E000078897B /* Views */,
+				CCA9A44822271DCC0078897B /* Controllers */,
+				CCA9A445222716F20078897B /* Networking */,
 				CCF107CC22246C8600FF2D19 /* AppDelegate.swift */,
-				CCF107CE22246C8600FF2D19 /* ViewController.swift */,
 				CCF107D022246C8600FF2D19 /* Main.storyboard */,
 				CCF107D322246C8800FF2D19 /* Assets.xcassets */,
 				CCF107D522246C8800FF2D19 /* LaunchScreen.storyboard */,
@@ -197,6 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF107F22224ABC700FF2D19 /* PersonTableViewController.swift in Sources */,
+				CCA9A44C22271E2C0078897B /* Persons.swift in Sources */,
+				CCA9A4472227170D0078897B /* Request.swift in Sources */,
+				CCF107ED22249E3D00FF2D19 /* PersonTableViewCell.swift in Sources */,
+				CCF107F52224B5C500FF2D19 /* PersonDetailsViewController.swift in Sources */,
 				CCF107CF22246C8600FF2D19 /* ViewController.swift in Sources */,
 				CCF107CD22246C8600FF2D19 /* AppDelegate.swift in Sources */,
 			);
