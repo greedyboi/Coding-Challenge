@@ -18,6 +18,8 @@
 		CCF107ED22249E3D00FF2D19 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107EC22249E3D00FF2D19 /* PersonTableViewCell.swift */; };
 		CCF107F22224ABC700FF2D19 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107F02224ABC700FF2D19 /* PersonTableViewController.swift */; };
 		CCF107F52224B5C500FF2D19 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF107F42224B5C500FF2D19 /* PersonDetailsViewController.swift */; };
+		CCFC1B54222DF9FB00980C12 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC1B53222DF9FB00980C12 /* Storage.swift */; };
+		CCFC1B56222DFE5B00980C12 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC1B55222DFE5B00980C12 /* FavoritesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		CCF107EC22249E3D00FF2D19 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		CCF107F02224ABC700FF2D19 /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		CCF107F42224B5C500FF2D19 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
+		CCFC1B53222DF9FB00980C12 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		CCFC1B55222DFE5B00980C12 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +70,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CCA9A445222716F20078897B /* Networking */ = {
+		CCA9A445222716F20078897B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				CCA9A4462227170D0078897B /* Request.swift */,
+				CCFC1B53222DF9FB00980C12 /* Storage.swift */,
 			);
-			path = Networking;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		CCA9A44822271DCC0078897B /* Controllers */ = {
@@ -79,6 +84,7 @@
 			children = (
 				CCF107F42224B5C500FF2D19 /* PersonDetailsViewController.swift */,
 				CCF107F02224ABC700FF2D19 /* PersonTableViewController.swift */,
+				CCFC1B55222DFE5B00980C12 /* FavoritesTableViewController.swift */,
 				CCF107CE22246C8600FF2D19 /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -124,7 +130,7 @@
 				CCA9A44A22271E190078897B /* Models */,
 				CCA9A44922271E000078897B /* Views */,
 				CCA9A44822271DCC0078897B /* Controllers */,
-				CCA9A445222716F20078897B /* Networking */,
+				CCA9A445222716F20078897B /* Utils */,
 				CCF107CC22246C8600FF2D19 /* AppDelegate.swift */,
 				CCF107D022246C8600FF2D19 /* Main.storyboard */,
 				CCF107D322246C8800FF2D19 /* Assets.xcassets */,
@@ -247,8 +253,10 @@
 				CCF107F22224ABC700FF2D19 /* PersonTableViewController.swift in Sources */,
 				CCA9A44C22271E2C0078897B /* Persons.swift in Sources */,
 				CCA9A4472227170D0078897B /* Request.swift in Sources */,
+				CCFC1B56222DFE5B00980C12 /* FavoritesTableViewController.swift in Sources */,
 				CCF107ED22249E3D00FF2D19 /* PersonTableViewCell.swift in Sources */,
 				CCF107F52224B5C500FF2D19 /* PersonDetailsViewController.swift in Sources */,
+				CCFC1B54222DF9FB00980C12 /* Storage.swift in Sources */,
 				CCF107CF22246C8600FF2D19 /* ViewController.swift in Sources */,
 				CCF107CD22246C8600FF2D19 /* AppDelegate.swift in Sources */,
 			);

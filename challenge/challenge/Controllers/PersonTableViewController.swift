@@ -19,7 +19,6 @@ class PersonTableViewController: UITableViewController {
         
         //Load persons
         fetchPersons()
-        print(persons.results.count)
     }
 
     // MARK: - Table view data source
@@ -40,7 +39,8 @@ class PersonTableViewController: UITableViewController {
         }
         
         let person = persons.results[indexPath.row]
-        
+
+        cell.favButton.tag = indexPath.row
         cell.nameLabel.text = person.name.first.capitalized + " " + person.name.last.capitalized
         cell.emailLabel.text = person.email
 
@@ -82,15 +82,24 @@ class PersonTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetails" {
+            
+            let detailViewController = segue.destination
+                as! PersonDetailsViewController
+            
+            let myIndexPath = self.tableView.indexPathForSelectedRow!
+            let row = myIndexPath.row
+            detailViewController.person = persons.results[row]
+        } else if segue.identifier == "ShowFavorites" {
+            
+            let favoritesViewController = segue.destination as! FavoritesTableViewController
+            favoritesViewController.favorites = Storage.load()
+        }
     }
-    */
     
     //MARK: Private Methods
     

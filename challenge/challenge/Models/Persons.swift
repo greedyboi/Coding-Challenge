@@ -8,19 +8,35 @@
 
 import Foundation
 
-struct Persons: Decodable {
-    struct Person: Decodable {
-        struct Name: Decodable {
-            let first: String
-            let last: String
-        }
-        struct Avatar: Decodable {
-            let thumbnail: String
-        }
-        
-        let name: Name
-        let email: String
-        let picture: Avatar
+struct Person: Codable {
+
+    struct Name: Codable {
+        let first: String
+        let last: String
     }
+    struct Location: Codable {
+        let street: String
+        let city: String
+        let state: String
+//        let postcode: Int
+    }
+    struct Avatar: Codable {
+        let thumbnail: String
+    }
+    struct DateOfBirth: Codable {
+        let date: String
+        let age: Int
+    }
+    let name: Name
+    let location: Location
+    let email: String
+    let picture: Avatar
+    let dob: DateOfBirth
+    let phone: String
+    let cell: String
+    
+}
+
+struct Persons: Codable {
     var results: [Person]
 }

@@ -28,6 +28,7 @@ class Request {
             }
             if let mimeType = httpResponse.mimeType, mimeType == "application/json",
                 let data = data {
+                print(data)
                 let json = try? JSONDecoder().decode(Persons.self, from: data)
                 self.updateData(json: json!)
                 DispatchQueue.main.async {
