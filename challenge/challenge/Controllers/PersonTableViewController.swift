@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PersonTableViewController: UITableViewController {
     //MARK: Proporties
     
     var persons = Persons(results: [])
     var request = Request()
+    var page = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(refreshPersonsData(_:)), for: .valueChanged)
+        
+        self.refreshControl = refreshControl
         //Load persons
-        fetchPersons()
+        fetchPersons(page)
     }
 
     // MARK: - Table view data source
@@ -38,50 +45,35 @@ class PersonTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of PersonTableViewCell.")
         }
         
-        let person = persons.results[indexPath.row]
-
-        cell.favButton.tag = indexPath.row
-        cell.nameLabel.text = person.name.first.capitalized + " " + person.name.last.capitalized
-        cell.emailLabel.text = person.email
-
+        if self.tableView(self.tableView, numberOfRowsInSection: 0) > 0 {
+            if indexPath.row == persons.results.count - 1 {
+                self.page += 1
+                fetchPersons(self.page)
+            }
+            let person = persons.results[indexPath.row]
+            
+            cell.nameLabel.text = person.name.first.capitalized + " " + person.name.last.capitalized
+            cell.emailLabel.text = person.email
+            if Storage.checkIfFav(person) == -1 {
+                cell.favButton.setTitle("Add to Favorites", for: UIControl.State.normal)
+                cell.favButton.accessibilityIdentifier = "AddToFav"
+            } else {
+                cell.favButton.setTitle("Unfavorite", for: UIControl.State.normal)
+                cell.favButton.accessibilityIdentifier = "RemoveFromFav"
+            }
+            cell.buttonTap = { cell in
+                if Storage.checkIfFav(person) == -1 {
+                    Storage.inFav(person)
+                } else {
+                    Storage.removeFromFavorites(person)
+                }
+                self.tableView.reloadData()
+            }
+            //cell.avatarImage.sd_setImage(with: URL(string: person.picture.thumbnail))
+        }
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -101,16 +93,27 @@ class PersonTableViewController: UITableViewController {
         }
     }
     
-    //MARK: Private Methods
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
     
-    private func fetchPersons() {
-        request.fetchData() { results, errorMessage in
+    //MARK: Private Methods
+    @objc private func refreshPersonsData(_ sender: Any) {
+        // Fetch Persons Data
+        self.persons.results = []
+        self.page = 1
+        fetchPersons(1)
+        self.refreshControl!.endRefreshing()
+    }
+    
+    private func fetchPersons(_ page: Int) {
+        request.fetchData(page) { results, errorMessage in
             if let results = results {
-                self.persons = results
+                self.persons.results += results.results
                 self.tableView.reloadData()
             }
             if !errorMessage.isEmpty {
-                NSLog("Got a Network error: %s", errorMessage)
+                print("Got a Network error: %s", errorMessage)
                 let alert = UIAlertController(title: "Network Error", message: errorMessage, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Dismiss", comment: "Default action"), style: .default, handler: { _ in
                     NSLog(errorMessage)

@@ -41,6 +41,22 @@ class FavoritesTableViewController: UITableViewController {
         return cell
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        favorites = Storage.load()
+        self.tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetails" {
+            let detailViewController = segue.destination
+                as! PersonDetailsViewController
+            
+            let myIndexPath = self.tableView.indexPathForSelectedRow!
+            let row = myIndexPath.row
+            detailViewController.person = favorites.results[row]
+        }
+    }
+    
 
 
 }

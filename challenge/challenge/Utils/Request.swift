@@ -14,8 +14,8 @@ class Request {
     var errorMessage = ""
     var persons = Persons(results: [])
     
-    func fetchData(completion: @escaping QueryResult) {
-        let url = URL(string: "https://randomuser.me/api/?results=10&page=1&seed=challenge")!
+    func fetchData(_ page: Int, completion: @escaping QueryResult) {
+        let url = URL(string: "https://randomuser.me/api/?results=10&page=" + String(page) + "&seed=challenge")!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 self.errorMessage += "Client Error: " + error.localizedDescription

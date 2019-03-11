@@ -10,35 +10,22 @@ import UIKit
 
 class PersonTableViewCell: UITableViewCell {
     //MARK: Properties
-    var person: Person!
+    var person: Person?
+    var buttonTap: ((UITableViewCell) -> Void)?
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet var favButton: UIButton!
-    //@IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var avatarImage: UIImageView!
+    
+    @IBAction func toggleFav(_ sender: UIButton) {
+        buttonTap?(self)
+    }
     
     override func awakeFromNib() {
         // Initialization code
         
         super.awakeFromNib()
-        
-        nameLabel.text = person.name.first.capitalized + " " + person.name.last.capitalized
-        emailLabel.text = person.email
-        favButton.setTitle((Storage.checkIfFav(person!) > -1 ? "Unfavorite" : "Add to Favorites"), for: UIControl.State.normal)
-        favButton.accessibilityIdentifier = Storage.checkIfFav(person!) > -1 ? "RemoveFromFav" : "AddToFav"
-    }
-
-    //MARK: Actions
-    @IBAction func toggleFav(_ sender: UIButton) {
-        self.
-        if sender.accessibilityIdentifier == "AddToFav" {
-            Storage.inFav(person!)
-            favButton.setTitle("Unfavorite", for: UIControl.State.normal)
-            sender.accessibilityIdentifier = "RemoveFromFav"
-        } else if sender.accessibilityIdentifier == "RemoveFromFav" {
-            Storage.removeFromFavorites(person!)
-            favButton.setTitle("Add to Favorites", for: UIControl.State.normal)
-            sender.accessibilityIdentifier = "AddToFav"
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
